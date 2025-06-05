@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SilverAssist - Senior Helper App</title>
+    <style>
+      /* CSS Reset & Base Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      /* High-Contrast Mode for Better Readability */
+      .container {
+        max-width: 450px;
+        margin: 0 auto;
+        background: white;
+        min-height: 100vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header */
+      .header {
+        background: #2a5c99;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      /* Large Buttons for Easy Tapping */
+      .big-button {
+        display: block;
+        background: #4a90e2;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin: 15px;
+        border-radius: 10px;
+        font-size: 22px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .big-button:hover {
+        background: #3a7bc8;
+      }
+
+      /* Emergency Button (Red for Urgency) */
+      .emergency {
+        background: #e74c3c;
+      }
+
+      .emergency:hover {
+        background: #c0392b;
+      }
+
+      /* Medication List */
+      .med-list {
+        padding: 10px;
+      }
+
+      .med-item {
+        background: #eaf2f8;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        font-size: 18px;
+      }
+
+      /* Contact Cards */
+      .contact-card {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .contact-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .call-btn {
+        background: #2ecc71;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SCREEN 1: HOME SCREEN -->
+    <div class="container" id="home-screen">
+      <div class="header">SilverAssist</div>
+      <a href="#medication-screen" class="big-button">💊 Medication Reminder</a>
+      <a href="#contacts-screen" class="big-button">🆘 Emergency Contacts</a>
+      <a href="#" class="big-button">📅 Daily Tasks</a>
+      <a href="#" class="big-button emergency">🚨 Emergency Call (911)</a>
+    </div>
+
+    <!-- SCREEN 2: MEDICATION REMINDER -->
+    <div class="container" id="medication-screen" style="display: none">
+      <div class="header">Medication Reminder</div>
+      <div class="med-list">
+        <div class="med-item">🟢 Morning - Blood Pressure Pill (8:00 AM)</div>
+        <div class="med-item">🟡 Afternoon - Pain Reliever (2:00 PM)</div>
+        <div class="med-item">🔴 Evening - Sleep Aid (9:00 PM)</div>
+      </div>
+      <button class="big-button">➕ Add New Reminder</button>
+      <a href="#home-screen" class="big-button">← Back to Home</a>
+    </div>
+
+    <!-- SCREEN 3: EMERGENCY CONTACTS -->
+    <div class="container" id="contacts-screen" style="display: none">
+      <div class="header">Emergency Contacts</div>
+      <div class="contact-card">
+        <img src="portrait-smiley-man-with-arms-crossed.jpg" alt="Dr. Smith" />
+        <div class="contact-info">
+          <strong>Dr. Suheil</strong><br />
+          Primary Care Doctor
+        </div>
+        <button class="call-btn">Call</button>
+      </div>
+      <div class="contact-card">
+        <img src="portrait-young-man-isolated.jpg" alt="Daughter" />
+        <div class="contact-info">
+          <strong>Suheil (Son)</strong><br />
+          Mobile
+        </div>
+        <button class="call-btn">Call</button>
+      </div>
+      <a href="#home-screen" class="big-button">← Back to Home</a>
+    </div>
+
+    <!-- Simple JS to switch screens (for demo) -->
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelectorAll(".container").forEach((screen) => {
+            screen.style.display = "none";
+          });
+          document.querySelector(this.getAttribute("href")).style.display =
+            "block";
+        });
+      });
+    </script>
+  </body>
+</html>
